@@ -16,21 +16,35 @@ use App\Http\Controllers\ControladoDeRegistro;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', function () {
     return view('login.login');
 });
 
-Route::get(
-    '/register', function () {
+//---------------- Parte del login------------------
+
+Route::get('/login', function () {
+    return view('login.login');
+    })->name('login');
+
+Route::get('/register',function(){
     return view('login.registrar');
-});
+    })->name('register');
 
 Route::post(
     '/register',
-     [ControladoDeRegistro::class , 'registrar']);
+     [ControladoDeRegistro::class , 'registrar']
+     )->name('register');
+
+Route::post('/login',
+     [ControladoDeRegistro::class, 'entrar']
+    )->name('login');
+
+Route::post('/logout', 
+    [ControladoDeRegistro::class, 'destroy']
+)->name('logout');
+
+//-------------- Parte del contenido---------------
+
+
 
 Route::get(
     '/registrar',

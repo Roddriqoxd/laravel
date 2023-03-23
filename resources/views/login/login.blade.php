@@ -117,20 +117,36 @@
     <section class="container-main">
 
         <div class="signupFrm">
-            <form action="" class="form">
+            <form action="{{ route('login') }}" class="form" method="POST">
+              @csrf
               <i class="gg-atlasian"></i><label class="title">OTB patito</label>
 
               <div class="inputContainer">
-                <input type="text" class="input" placeholder="a" required>
+                <input type="text" class="input" name="name" placeholder="a" autofocus>
                 <label for="" class="label">Cuenta</label>
               </div>
 
               <div class="inputContainer">
-                <input type="password" class="input" placeholder="a" required>
+                <input type="password" class="input" name="password" placeholder="a" >
                 <label for="" class="label">Contraseña</label>
               </div>
+
+              <section class="message-error">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+              </section>
+
+              <a href="{{ route('register') }}">Registrarme</a>
         
               <input type="submit" class="submitBtn" value="Entrar">
+      
             </form>
 
     </section>

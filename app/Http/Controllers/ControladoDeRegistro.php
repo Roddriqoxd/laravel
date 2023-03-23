@@ -5,91 +5,54 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PedidoDeRegistro;
 use App\Models\Afiliados;
 use App\Models\User;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
 
 class ControladoDeRegistro extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function registrar(Request $request)
     {
-        //
+        $request->validate([
+           'name' => ['required','string','max:255'],
+           'email'=> ['required','string','email', 'max:255','unique:users,email'],
+           'password'=> ['required','confirmed',Rules\Password::default()] 
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email'=> $request->email,
+            'password'=> $request->password,
+        ]);
+
+        return to_route('login')->with('status','Usuario creado exitosamente');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function entrar(Request $request)
     {
-        //
+        $login = $request->validate([
+            'name'=>['required'],
+            'password'=>['required']
+        ]);
+
+        if(Auth::attempt($login)){
+            $request->session()->regenerate();
+
+            return redirect()->intended('/registrar/mostrar');
+        }
+        throw ValidationException::withMessages([__('auth.failed')]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        Auth::guard('web')->logout();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Afiliados  $afiliados
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Afiliados $afiliados)
-    {
-        return view('login.registrar');
-    }
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    public function registrar(PedidoDeRegistro $request)
-    {
-        
-
-        $user = User::create( $request -> validate());
-        return view('login.login');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Afiliados  $afiliados
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Afiliados $afiliados)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Afiliados  $afiliados
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Afiliados $afiliados)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Afiliados  $afiliados
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Afiliados $afiliados)
-    {
-        //
+        return to_route('login');
     }
 }

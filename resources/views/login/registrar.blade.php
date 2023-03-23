@@ -11,7 +11,7 @@
 
         body{
             background-color: #3863a3;
-            font-family: 'Poppins', sans-serif; 
+            font-family: 'Poppins', sans-serif;
         }
         .container-main{
             width: 100%;
@@ -19,6 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
         }
         .signupFrm {
           display: flex;
@@ -117,24 +118,61 @@
     <section class="container-main">
 
         <div class="signupFrm">
-            <form action="/register" method="POST" class="form">
+            <form action="{{ route('register') }}" method="POST" class="form">
                 @csrf
               <i class="gg-atlasian"></i><label class="title">OTB patito</label>
 
               <div class="inputContainer">
-                <input type="email" name="email" class="input" placeholder="a" required>
+                <input 
+                autofocus
+                type="text" 
+                name="name" 
+                class="input" 
+                placeholder="a"
+                value="{{ old('name') }}">
+                <label for="" class="label">Nombre</label>
+              </div>
+
+
+              <div class="inputContainer">
+                <input 
+                type="text"
+                name="email" 
+                class="input" 
+                placeholder="a"
+                value="{{ old('email') }}">
                 <label for="" class="label">Email</label>
               </div>
 
               <div class="inputContainer">
-                <input type="password" name="password" class="input" placeholder="a" required>
+                <input type="password" 
+                name="password" 
+                class="input" 
+                placeholder="a">
                 <label for="" class="label">Passwrod</label>
               </div>
 
               <div class="inputContainer">
-                <input type="password" class="input" name="password_confirmation" placeholder="a" required>
+                <input type="password" 
+                class="input" 
+                name="password_confirmation" 
+                placeholder="a">
                 <label for="" class="label">Confirmar password</label>
               </div>
+
+              <section class="message-error">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+              </section>
+
+              <a href="{{ route('login') }}">Login</a>
         
               <input type="submit" class="submitBtn" value="Registrar">
             </form>

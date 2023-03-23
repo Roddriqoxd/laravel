@@ -54,6 +54,9 @@
         text-decoration: none;
         color: white;
       }
+      .submitBtn{
+        
+      }
     </style>
 
     <nav class="container-nav">
@@ -81,6 +84,15 @@
         </section>
 
       </section>  
+      @auth
+      <section class="routes-content">
+        <label for="">{{ Auth::user()->name }}</label>
+        <form action="{{ route('logout') }}" method="POST">
+          @csrf
+          <input type="submit" class="btn-link" value="Salir">
+        </form>
+        </section>
+      @endauth
 
     </nav>
 

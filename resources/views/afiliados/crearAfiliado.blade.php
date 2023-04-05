@@ -5,30 +5,42 @@
 @section("contenido")
     <style>
       .container-content{
-        padding: 20px;
-        width: 100%;
-        height: 80vh;
-      }
-      .content-form{
-        padding: 50px;
-        width: 100%;
-        height: 100%;
-        padding-left: 11%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-
+        width: 85%;
+        padding: 20px;
+        height: 100vh;
+        overflow: auto;
+      }
+      .content-cabecera{
+        padding-bottom: 10px;
+        height: 10%;
+      }
+      .content-form{
+        padding-left: 20%;
+        padding-right: 20%;
+        padding-top: 5%;
+        width: 100%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: auto;
+        background-color: #e1e1e1;
       }
       .form-data{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 20px;
+        width: 100%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
       }
       .inputContainer {
           position: relative;
           height: 45px;
-          width: 90%;
+          width: 100%;
           margin-bottom: 17px;
         }
         .input {
@@ -37,8 +49,8 @@
           left: 0px;
           height: 100%;
           width: 100%;
-          border: 1px solid #3863a3;
-          border-radius: 7px;
+          border: 1px solid #000000af;
+          border-radius: 2px;
           font-size: 16px;
           padding: 0 20px;
           outline: none;
@@ -54,7 +66,7 @@
           left: 15px;
           padding: 0 4px;
           background-color: white;
-          color: #68a5ff;
+          color: #636363;
           font-size: 16px;
           transition: 0.5s;
           z-index: 0;
@@ -69,7 +81,6 @@
           border-radius: 6px;
           cursor: pointer;
           font-size: 16px;
-          margin-top: 30px;
         }
 
         .submitBtn:hover {
@@ -96,7 +107,7 @@
       }
       .double-content{
         display: flex;
-        width: 90%;
+        width: 100%;
         gap: 20px;
       }
       .message-error{
@@ -105,15 +116,27 @@
         padding: 20px;
         width: 90%;
       }
+      .cabecera-title{
+        font-weight: bold;
+      }
+      .modal-body{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
     </style>
     <section class="container-content">
-      <h2>Registrar nuevo usuario</h2>
+
+      <section class="content-cabecera">
+        <h3 class="cabecera-title">Registrar nuevo usuario</h3>
+      </section>
+
       
-      <section class="content-form">
+      {{-- <section class="content-form"> --}}
         
         <form class="form-data" action="{{ route('afiliados.guardar') }}" method="POST">
           @csrf
-          <div class="inputContainer">
+          {{-- <div class="inputContainer">
             <input type="text" class="input" placeholder="a" name="nombre" value="{{ old('nombre') }}">
             <label for="" class="label">Nombre</label>
           </div>
@@ -159,21 +182,87 @@
             </div>
           </section>
 
-          <input type="submit" class="submitBtn" value="Registrar">
+          <section class="double-content">
+            <input type="submit" class="submitBtn" value="Registrar">
+          </section> --}}
+          
+          <div class="modal-body">
 
-        </form>
-        <section class="message-error">
-          @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
+            <div class="form-floating mb-3">
+              <input autofocus type="text" class="form-control rounded-0 " name="nombre" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Nombre completo</label>
+            </div>  
+
+            <div class="row">
+
+              <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control rounded-0"  name="apellido_p" id="floatingInput" placeholder="name@example.com">
+                <label class="px-4" for="floatingInput">Apellido paterno</label>
+              </div>
+
+              <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control rounded-0" name="apellido_m" id="floatingInput" placeholder="name@example.com">
+                <label class="px-4" for="floatingInput">Apellido materno</label>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control rounded-0" name="celular" id="floatingInput" placeholder="name@example.com">
+                <label class="px-4" for="floatingInput">Telefono / Celular</label>
+              </div>
+
+              <div class="form-floating mb-3 col-md-6">
+                <input type="date" class="form-control rounded-0" name="fecha_registro" id="floatingInput" placeholder="name@example.com">
+                <label class="px-4" for="floatingInput">Fecha de ingreso</label>
+              </div>
+
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control rounded-0" name="direccion" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Dirección</label>
+            </div>   
+
+            <div class="row">
+
+              <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control rounded-0" name="num_casa" id="floatingInput" placeholder="name@example.com">
+                <label class="px-4" for="floatingInput">Nro. Casa</label>
+              </div>
+
+              <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control rounded-0" name="cod_medidor" id="floatingInput" placeholder="name@example.com">
+                <label class="px-4" for="floatingInput">Codigo de medidor</label>
+              </div>
+
+            </div>
+
           </div>
-      @endif
-        </section>
-        
+          <div class="modal-footer rounded-0">
+            <button data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" type="button" onclick="submit()" class="btn btn-primary">Añadir</button>
+            <script>
+              submit(){
+                document.getElementById('form').submit();
+                document.getElementById('añadir').click();
+              }
+            </script>
+          </div>
+          <section class="message-error">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+          </section>
+        </form>
+
       </section>
 
     </section>

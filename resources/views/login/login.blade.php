@@ -7,11 +7,12 @@
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/atlasian.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=poppins:wght@400;600&display=swap');
 
         body{
             background-color: #3863a3;
             font-family: 'Poppins', sans-serif; 
+            letter-spacing: 2px;
         }
         .container-main{
             width: 100%;
@@ -122,7 +123,7 @@
               <i class="gg-atlasian"></i><label class="title">OTB patito</label>
 
               <div class="inputContainer">
-                <input type="text" class="input" name="name" placeholder="a" autofocus>
+                <input type="text" class="input" name="email" placeholder="a" autofocus>
                 <label for="" class="label">Cuenta</label>
               </div>
 

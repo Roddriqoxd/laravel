@@ -52,7 +52,7 @@ Route::get(
     )->name('afiliados.crearAfiliado');
 
 Route::post(
-    '/registrar/guardar',
+    '/registrar/mostrar',
     [ControladorTareas::class, 'store']
     )->name('afiliados.guardar');
 

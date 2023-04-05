@@ -34,7 +34,7 @@ class ControladoDeRegistro extends Controller
     public function entrar(Request $request)
     {
         $login = $request->validate([
-            'name'=>['required'],
+            'email'=>['required'],
             'password'=>['required']
         ]);
 

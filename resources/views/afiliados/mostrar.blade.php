@@ -53,7 +53,11 @@
       .cabecera-title{
         font-weight: bold;
       }
-      .direction{
+      .overflow{
+        width: 200px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
       }
     </style>
     
@@ -157,7 +161,7 @@
             <th class="col">Nombre</th>
             <th class="col">Apellidos</th>
             <th class="col">Celular</th>
-            <th class="direction">Direccion</th>
+            <th class="col">Direccion</th>
             <th class="col">Nro. Casa</th>
             <th class="col">Editar</th>
           </tr>
@@ -166,12 +170,16 @@
           @foreach ( $datos as $dato )
           <tr>
             <td class="col">{{ $dato->id }}</td>
-            <td class="col">{{ $dato->nombre }}</td>
-            <td class="col">{{ $dato->apellido_p }} {{ $dato->apellido_m }}</td>
+            <td class="col"><div class="overflow">{{ $dato->nombre }}</div></td>
+            <td class="col"><div class="overflow">{{ $dato->apellido_p }} {{ $dato->apellido_m }}</div></td>
             <td class="col">{{ $dato->celular }}</td>
-            <td class="direction">{{ $dato->direccion }}</td>
+            <td class="col"><div class="overflow">{{ $dato->direccion }}</div></td>
             <td class="col">{{ $dato->num_casa }}</td>
-            <td class="col">Editar</td>
+            <td class="col">
+              <button class="btn bg-warning">Ver</button>
+              <button class="btn bg-success">Editar</button>
+              <button class="btn bg-danger">Eliminar</button>
+            </td>
           </tr>
           @endforeach
         </tbody>

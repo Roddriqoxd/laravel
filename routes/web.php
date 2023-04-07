@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegistrarMedidor;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorTareas;
 use App\Http\Controllers\ControladoDeRegistro;
@@ -45,6 +46,7 @@ Route::post('/logout',
 //-------------- Parte del contenido---------------
 
 
+// ----------Registrar------------
 
 Route::get(
     '/registrar',
@@ -52,11 +54,25 @@ Route::get(
     )->name('afiliados.crearAfiliado');
 
 Route::post(
-    '/registrar/mostrar',
+    '/registrar',
     [ControladorTareas::class, 'store']
     )->name('afiliados.guardar');
+
+// -------------Ver------------
 
 Route::get(
     '/registrar/mostrar',
     [ControladorTareas::class, 'index']
     )->name('afiliados.mostrar');
+
+// ---------------Registrar medidor-----------
+
+Route::get(
+    '/registrar/medidor',
+    [RegistrarMedidor::class, 'index']
+    )->name('medidores.crear');
+
+// Route::post(
+//     '/registrar',
+//     [ControladorTareas::class, 'store']
+//     )->name('afiliados.guardar');

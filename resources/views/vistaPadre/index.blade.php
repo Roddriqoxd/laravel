@@ -45,6 +45,8 @@
       .routes-content{
         color: white;
         gap: 10px;
+        display: flex;
+        align-items: center;
       }
       .fas{
         padding-right: 8px;
@@ -69,19 +71,29 @@
       <section class="container-ruters">
 
         <section class="routes-content">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-users"></i>
         <a class="btn-routes" href="{{ route('afiliados.mostrar') }}">Afiliados</a>
         </section>     
         
         <section class="routes-content">
           <i class="fas fa-user"></i>
-        <a class="btn-routes" href="{{ route('afiliados.crearAfiliado') }}">Registrar</a>
-        </section>     
+        <a class="btn-routes" href="{{ route('afiliados.guardar') }}"><div>Registrar <br> usuario</div></a>
+        </section>
+        
+        <section class="routes-content">
+          <i class="fas fa-droplet"></i>
+        <a class="btn-routes" href="{{ route('medidores.crear') }}"><div>Registrar <br> medidor</div></a>
+        </section>
 
         <section class="routes-content">
-          <i class="fas fa-user"></i>
-        <a class="btn-routes" href="">Registrar</a>
+          <i class="fas fa-light fa-scroll"></i>
+        <a class="btn-routes" href="">Historial de pagos</a>
         </section>
+
+        {{-- <section class="routes-content">
+          <i class="fas fa-light fa-scroll"></i>
+        <a class="btn-routes" href="">Precio del agua</a>
+        </section> --}}
 
       </section>  
       @auth

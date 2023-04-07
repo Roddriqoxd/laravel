@@ -1,6 +1,6 @@
 @extends('vistaPadre.index')
 
-@section("title","Registar")
+@section("title","Crear medidor")
 
 @section("contenido")
     <style>
@@ -128,7 +128,7 @@
     <section class="container-content">
 
       <section class="content-cabecera">
-        <h3 class="cabecera-title">Registrar nuevo usuario</h3>
+        <h3 class="cabecera-title">Registrar nuevo medidor</h3>
       </section>
         
         <form class="form-data" action="{{ route('afiliados.guardar') }}" method="POST">
@@ -138,7 +138,7 @@
 
             <div class="form-floating mb-3">
               <input autofocus type="text" class="form-control rounded-0 " name="nombre" id="floatingInput" placeholder="name@example.com">
-              <label for="floatingInput">Nombre(s)</label>
+              <label for="floatingInput">Nombre completo</label>
             </div>  
 
             <div class="row">

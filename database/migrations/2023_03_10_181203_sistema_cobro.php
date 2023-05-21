@@ -22,13 +22,8 @@ return new class extends Migration
             $table->string('apellido_p',50);
             $table->string('celular', 64);
             $table->timestamp('fecha_registro');
-
-            // $table->string('cod_medidor');
             $table->unsignedBigInteger('cod_medidor');
             $table->foreign('cod_medidor')->references('id')->on('medidores');
-
-
-            $table->string('direccion');
             $table->string('num_casa',50);
             $table->timestamps();
             $table->softDeletes();

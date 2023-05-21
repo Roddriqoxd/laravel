@@ -46,17 +46,25 @@ Route::post('/logout',
 //-------------- Parte del contenido---------------
 
 
-// ----------Registrar------------
+// ----------Registrar AFILIADO------------
+
+Route::get(
+    '/registrar/afiliado',
+    [ControladorTareas::class, 'create']
+    )->name('afiliados.afiliado');
+
+Route::post(
+    '/registrar/afiliado',
+    [ControladorTareas::class, 'store']
+    )->name('afiliados.guardar');
+
+
+// ----------Registrar usuarios------------
 
 Route::get(
     '/registrar',
-    [ControladorTareas::class, 'create']
-    )->name('afiliados.crearAfiliado');
-
-Route::post(
-    '/registrar',
-    [ControladorTareas::class, 'store']
-    )->name('afiliados.guardar');
+    [ControladorTareas::class, 'seleccion']
+    )->name('seleccion');
 
 // -------------Ver------------
 
@@ -72,7 +80,12 @@ Route::get(
     [RegistrarMedidor::class, 'index']
     )->name('medidores.crear');
 
-// Route::post(
-//     '/registrar',
-//     [ControladorTareas::class, 'store']
-//     )->name('afiliados.guardar');
+Route::post(
+    '/registrar/medidor',
+    [RegistrarMedidor::class, 'create']
+    )->name('medidor.guardar');
+
+// ---------------Registrar AFILIADO-----------
+
+
+

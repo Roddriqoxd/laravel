@@ -28,7 +28,7 @@ class ControladorTareas extends Controller
      */
     public function create()
     {
-        return view('afiliados.crearAfiliado');
+        return view('afiliados.afiliado');
     }
 
     /**
@@ -46,16 +46,19 @@ class ControladorTareas extends Controller
                 'apellido_m' => 'required|max:60',
                 'celular' => 'required',
                 'fecha_registro' => 'nullable',
-                'cod_medidor'  => 'required',
-                'num_casa'  => 'required',
-                'direccion'  => 'required'
+                'cod_medidor' => 'nullable',
+                'num_casa'  => 'max:60',
             ]
             );
 
                 $registrar = Afiliados::create($datos);
                 return redirect()->route('afiliados.mostrar');
-                // return view('afiliados.mostrar');
 
+    }
+
+    public function seleccion()
+    {
+        return view('registro.registro');
     }
 
     /**

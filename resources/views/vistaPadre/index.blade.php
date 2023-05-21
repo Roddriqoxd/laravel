@@ -47,6 +47,7 @@
         gap: 10px;
         display: flex;
         align-items: center;
+        /* flex-direction: column; */
       }
       .fas{
         padding-right: 8px;
@@ -77,7 +78,7 @@
         
         <section class="routes-content">
           <i class="fas fa-user"></i>
-        <a class="btn-routes" href="{{ route('afiliados.guardar') }}"><div>Registrar <br> usuario</div></a>
+        <a class="btn-routes" href="{{ route('seleccion') }}"><div>Registrar</div></a>
         </section>
         
         <section class="routes-content">
@@ -89,11 +90,6 @@
           <i class="fas fa-light fa-scroll"></i>
         <a class="btn-routes" href="">Historial de pagos</a>
         </section>
-
-        {{-- <section class="routes-content">
-          <i class="fas fa-light fa-scroll"></i>
-        <a class="btn-routes" href="">Precio del agua</a>
-        </section> --}}
 
       </section>  
       @auth

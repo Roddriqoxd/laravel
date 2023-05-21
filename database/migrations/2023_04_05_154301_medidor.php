@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('apellido_p',50);
             $table->string('celular', 64);
             $table->timestamp('fecha_registro');
-            $table->string('cod_medidor');
-            $table->string('direccion');
             $table->string('num_casa',50);
             $table->timestamps();
             $table->softDeletes();

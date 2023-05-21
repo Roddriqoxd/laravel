@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Afiliados extends Model
+class Medidor extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'afiliados';
+    protected $table = 'medidores';
 
     protected $guarded = [];
 }

@@ -83,7 +83,7 @@
         
         <section class="routes-content">
           <i class="fas fa-droplet"></i>
-        <a class="btn-routes" href="{{ route('medidores.crear') }}"><div>Registrar <br> medidor</div></a>
+        <a class="btn-routes" href=""><div>Realizar <br> cobro</div></a>
         </section>
 
         <section class="routes-content">

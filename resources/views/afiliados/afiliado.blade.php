@@ -89,7 +89,7 @@
 
           </div>
 
-          <input type="hidden" name="cod_medidor" value="1">
+          <input type="hidden" name="cod_medidor" value="2">
 
           <div class="row">
 
@@ -102,13 +102,7 @@
 
         </div>
         <div class="modal-footer rounded-0">
-          <button data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" type="button" onclick="submit()" class="btn btn-primary">Añadir</button>
-          <script>
-            submit(){
-              document.getElementById('form').submit();
-              document.getElementById('añadir').click();
-            }
-          </script>
+          <button data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" type="submit" class="btn btn-primary">Añadir</button>
         </div>
 
 

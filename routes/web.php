@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\RegistrarMedidor;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorTareas;
 use App\Http\Controllers\ControladoDeRegistro;
+use App\Http\Controllers\cobrarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +87,15 @@ Route::post(
     [RegistrarMedidor::class, 'create']
     )->name('medidor.guardar');
 
-// ---------------Registrar AFILIADO-----------
+// ---------------Registrar COBRO-----------
+   
+Route::get(
+    '/cobrar',
+    [cobrarController::class, 'index']
+    )->name('medidores.crear');
 
-
+Route::post(
+    '/cobrar',
+    [Controller::class, 'create']
+    )->name('medidor.guardar');
 

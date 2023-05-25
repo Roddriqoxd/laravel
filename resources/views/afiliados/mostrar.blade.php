@@ -14,7 +14,7 @@
       .content-cabecera{
         display: flex;
         padding-bottom: 10px;
-        height: 7%;
+        height: 10%;
         justify-content: space-between;
       }
       .content-btn{
@@ -66,6 +66,7 @@
 
       <section class="content-cabecera">
         <h3 class="cabecera-title">Afiliados</h3>
+        
         <div class="content-btn">
 
             <button type="button" id="añadir" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -173,7 +174,7 @@
             <td class="col"><div class="overflow">{{ $dato->nombre }}</div></td>
             <td class="col"><div class="overflow">{{ $dato->apellido_p }} {{ $dato->apellido_m }}</div></td>
             <td class="col">{{ $dato->celular }}</td>
-            <td class="col"><div class="overflow">{{ $dato->direccion }}</div></td>
+            <td class="col"><div class="overflow">{{ $dato->ubicacion }}</div></td>
             <td class="col">{{ $dato->num_casa }}</td>
             <td class="col">
               <button class="btn bg-warning">Ver</button>

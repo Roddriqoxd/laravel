@@ -13,20 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
-        
-        Schema::create('medidores', function (Blueprint $table) {
+        Schema::create('afiliados', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo',50);
-            $table->integer('deuda')->length(10);
-            $table->unsignedBigInteger('precio');
-            $table->foreign('precio')->references('id')->on('precio_agua');
-            $table->string('ubicacion',50);
+            $table->string('nombre',50);
+            $table->string('apellido_m',50);
+            $table->string('apellido_p',50);
+            $table->string('celular', 64);
+            $table->timestamp('fecha_registro');
+            $table->unsignedBigInteger('cod_medidor');
+            $table->foreign('cod_medidor')->references('id')->on('medidores');
+            $table->string('num_casa',50);
             $table->timestamps();
             $table->softDeletes();
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medidores');
+        Schema::dropIfExists('afiliados');
     }
 };

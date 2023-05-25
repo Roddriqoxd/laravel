@@ -89,7 +89,7 @@
 
           </div>
 
-          <input type="hidden" name="cod_medidor" value="3">
+          <input type="hidden" name="cod_medidor" value="1">
 
           <div class="row">
 
